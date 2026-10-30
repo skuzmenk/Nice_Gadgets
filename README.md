@@ -79,26 +79,6 @@ npm run build creates a production build
 
 npm run lint checks the code for linting issues
 
-Project structure
-
-src/
-├── app/          # Application setup, routing and global styles
-├── components/   # Reusable UI components
-├── pages/        # Application pages
-├── hooks/        # Custom React hooks
-├── store/        # State management
-├── shared/       # Shared utilities and configurations
-├── styles/       # SCSS styles
-└── main.tsx      # Application entry point
-
-Backend and integrations
-
-Supabase – product database and application data storage
-
-Nova Poshta API – city and warehouse selection, delivery document creation
-
-EmailJS – email notifications
-
 React Query – asynchronous data fetching and caching
 
 Main goal
