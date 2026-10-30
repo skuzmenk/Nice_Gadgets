@@ -1,0 +1,1 @@
+export { CatalogTemplate } from './CatalogTemplate';

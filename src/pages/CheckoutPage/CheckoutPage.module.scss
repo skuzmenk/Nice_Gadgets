@@ -1,0 +1,373 @@
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/mixins' as *;
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  grid-column: 1/-1;
+}
+
+.title {
+  margin-bottom: 24px;
+  color: $primary;
+  font-weight: 700;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  @include on('tablet') {
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+}
+
+.formCard {
+  background-color: $white;
+  border: 1px solid $elements;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.subtitle {
+  margin-bottom: 8px;
+  color: $primary;
+  font-weight: 600;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    font-size: 14px;
+    color: $secondary;
+    font-weight: 500;
+  }
+
+  .phoneInput {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    span {
+      white-space: nowrap;
+    }
+
+    input {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 15px;
+    border: 1px solid $elements;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.2s ease;
+    background-color: $white;
+    color: $primary;
+    box-sizing: border-box;
+
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba(49, 50, 55, 0.1);
+    }
+
+    &::placeholder {
+      color: $icons;
+    }
+  }
+}
+
+.relativeContainer {
+  position: relative;
+}
+
+.dropdownList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: $white;
+  border: 1px solid $elements;
+  border-radius: 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dropdownItem {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  color: $primary;
+
+  &:hover {
+    background-color: $hover;
+  }
+}
+
+.selectInput {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 15px;
+  border: 1px solid $elements;
+  border-radius: 8px;
+  outline: none;
+  background-color: $white;
+  color: $primary;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0 0 0 3px rgba(49, 50, 55, 0.1);
+  }
+}
+
+.errorInput {
+  border-color: $red !important;
+  background-color: #fef2f2;
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(235, 87, 87, 0.15) !important;
+  }
+}
+
+.errorText {
+  font-size: 12px;
+  color: $red;
+  margin-top: 2px;
+}
+
+.submitButton {
+  margin-top: 12px;
+  align-self: center;
+  padding: 12px 24px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $green;
+  color: $white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+/* Success modal */
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease;
+}
+
+.successModal {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  padding: 36px 28px;
+  border: 1px solid $elements;
+  border-radius: 24px;
+  background: $white;
+  color: $primary;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  animation: modalAppear 0.25s ease;
+}
+
+.closeButton {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: $secondary;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background: $elements;
+  }
+}
+
+.successIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: #e5f8eb;
+  color: #218848;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.successTitle {
+  margin: 0 0 12px;
+  color: $primary;
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.successText {
+  margin: 0 0 24px;
+  color: $secondary;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ttnBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 16px;
+  border: 1px solid $elements;
+  border-radius: 12px;
+  background: #f5f5f5;
+}
+
+.ttnLabel {
+  color: $secondary;
+  font-size: 13px;
+}
+
+.ttnNumber {
+  overflow-wrap: anywhere;
+  color: $primary;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.successButton {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 48px;
+  background: $primary;
+  color: $white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $primary;
+    outline-offset: 3px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .formCard {
+    padding: 16px;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .successModal {
+    padding: 32px 20px 24px;
+    border-radius: 20px;
+  }
+
+  .successTitle {
+    font-size: 20px;
+  }
+
+  .ttnNumber {
+    font-size: 18px;
+  }
+}
+
+:global(html[data-theme='dark']) .submitButton {
+  background-color: #27ae60;
+  color: #fff;
+}

@@ -1,0 +1,397 @@
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/typography' as *;
+@use '@/app/styles/mixins' as *;
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  height: auto;
+  min-height: 64px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: $white;
+  border-bottom: 1px solid $elements;
+  padding-left: 16px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  justify-content: space-between;
+  z-index: 100;
+
+  @include on('tablet') {
+    flex-wrap: nowrap;
+    height: 64px;
+    padding-left: 24px;
+    justify-content: flex-start;
+  }
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  text-decoration: none;
+
+  @include on('tablet') {
+    margin-right: 48px;
+  }
+}
+
+.nav {
+  display: none;
+
+  @include on('tablet') {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @include on('desktop') {
+    gap: 64px;
+  }
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navLink,
+.mobileNavLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: $secondary;
+
+  @include uppercase;
+
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $primary;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: $primary;
+    transition: width 0.2s ease-in-out;
+  }
+
+  &.active {
+    color: $primary;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.navLink {
+  height: 100%;
+}
+
+.desktopContent {
+  display: contents;
+
+  @include on('tablet') {
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 24px;
+    height: 100%;
+  }
+}
+
+.headerActions {
+  display: contents;
+  position: relative;
+
+  @include on('tablet') {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex: 1 1 0;
+    min-width: 0;
+    gap: 16px;
+    @media (max-width: 850px) {
+      justify-content: flex-end;
+    }
+  }
+}
+
+.headerControls {
+  display: none;
+  align-items: center;
+  height: 100%;
+  flex: 0 0 auto;
+
+  @include on('tablet') {
+    display: flex;
+  }
+}
+
+.headerActions > .desktopSearch {
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
+  display: none;
+
+  @include on('tablet') {
+    display: flex;
+  }
+}
+
+.actionBtn,
+.mobileActionBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $hover;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: $primary;
+    transition: width 0.2s ease;
+  }
+
+  &.active {
+    background-color: $hover;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.actionBtn {
+  width: 64px;
+  height: 100%;
+  border-left: 1px solid $elements;
+}
+
+.burgerBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: none;
+  border: none;
+  border-left: 1px solid $elements;
+  cursor: pointer;
+  color: $primary;
+
+  @include on('tablet') {
+    display: none;
+  }
+}
+
+.mobileSearch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+
+  @include on('tablet') {
+    display: none;
+  }
+}
+
+.mobileSearchButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 64px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: $primary;
+  cursor: pointer;
+}
+
+.mobileSearchField {
+  position: fixed;
+  top: 64px;
+  right: 0;
+  left: 0;
+  z-index: 101;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.mobileMenu {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 64px);
+  background-color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+  z-index: 99;
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  @include on('tablet') {
+    display: none;
+  }
+}
+
+.mobileNavList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-grow: 1;
+  gap: 32px;
+  padding: 24px;
+  margin: 0;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.mobileNavLink {
+  padding-bottom: 8px;
+}
+
+.mobileActions {
+  display: flex;
+  height: 64px;
+  border-top: 1px solid $elements;
+}
+
+.mobileActionBtn {
+  flex: 1;
+  height: 100%;
+  border-right: 1px solid $elements;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+:global(html[data-theme='dark']) {
+  .actionBtn,
+  .mobileActionBtn {
+    > span[style*='--icon']:not([style*='--quantity']) {
+      filter: brightness(0) invert(1);
+      opacity: 0.8;
+    }
+
+    > span[style*='--quantity'] {
+      filter: invert(1);
+
+      &::before {
+        background-color: #14a8a8;
+        color: #000;
+        border-color: #d8d6cf;
+      }
+    }
+  }
+
+  .desktopSearch,
+  .mobileSearchButton {
+    [style*='--icon'] {
+      filter: brightness(0) invert(1);
+      opacity: 0.8;
+    }
+  }
+}
+
+.mobileSettings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  > :last-child {
+    margin-left: 0;
+
+    width: 36px;
+    height: 36px;
+
+    border: 1px solid $elements;
+    border-radius: 50%;
+
+    background-color: $hover;
+    color: $primary;
+  }
+}
+
+:global(html[data-theme='dark']) .burgerBtn {
+  > span[style*='--icon'] {
+    filter: brightness(0) invert(1);
+  }
+}
+
+.mobileCurrency {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-top: 1px solid $elements;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) and (max-width: 950px) {
+  .desktopContent {
+    display: contents;
+  }
+
+  .nav,
+  .headerControls,
+  .headerActions > .desktopSearch {
+    display: none;
+  }
+
+  .mobileSearch {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .burgerBtn {
+    display: flex;
+  }
+
+  .mobileMenu {
+    display: flex;
+  }
+}

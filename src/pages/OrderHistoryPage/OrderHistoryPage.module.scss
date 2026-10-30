@@ -1,0 +1,87 @@
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/mixins' as *;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  grid-column: 1/-1;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  @include on('tablet') {
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+}
+
+.title {
+  margin-bottom: 32px;
+  color: $primary;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.order {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 24px;
+  padding: 25px;
+  background-color: $white;
+  border: 1px solid $elements;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.section {
+  min-width: 0;
+  overflow-wrap: break-word;
+
+  h2 {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: $secondary;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 15px;
+    color: $primary;
+    font-weight: 400;
+    margin: 0;
+    padding: 10px;
+  }
+}
+
+.empty {
+  color: $secondary;
+  font-size: 15px;
+  text-align: center;
+  padding: 24px;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 24px 16px;
+  }
+
+  .order {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 16px;
+  }
+}

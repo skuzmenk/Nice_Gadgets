@@ -1,0 +1,208 @@
+@use '@/app/styles/colors' as *;
+@use '@/app/styles/mixins' as *;
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  box-sizing: border-box;
+  padding-inline: 14px;
+  border: 1px solid $elements;
+  border-radius: 999px;
+  background-color: $hover;
+
+  &:focus-within {
+    border-color: $primary;
+  }
+}
+
+.icon {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.input {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: $primary;
+  font-size: 14px;
+  line-height: 20px;
+
+  &::placeholder {
+    color: $secondary;
+  }
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+}
+
+.clearButton {
+  display: flex;
+  flex: 0 0 24px;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.clearButtonHidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.clearIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.results {
+  z-index: 1000;
+  max-height: min(70vh, 440px);
+  overflow-y: auto;
+  scrollbar-color: $icons transparent;
+  scrollbar-width: thin;
+  border: 1px solid $elements;
+  border-radius: 12px;
+  background-color: $white;
+  box-shadow: 0 12px 32px rgba(49, 50, 55, 0.14);
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border: 1px solid $white;
+    border-radius: 999px;
+    background-color: $icons;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: $secondary;
+  }
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 92px;
+  padding: 12px 14px;
+  color: $primary;
+  text-decoration: none;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid $elements;
+  }
+
+  &:hover,
+  &:focus-visible {
+    outline: none;
+    background-color: $hover;
+  }
+}
+
+.productImage {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  background-color: $hover;
+  object-fit: contain;
+}
+
+.productInfo {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.productName,
+.productDetails,
+.productPrice {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.productName {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.productDetails {
+  color: $secondary;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.productPrice {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.message {
+  margin: 0;
+  padding: 18px 16px;
+  color: $secondary;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@include on('tablet') {
+  .container {
+    gap: 12px;
+    min-height: 48px;
+    padding-inline: 16px;
+  }
+
+  .icon {
+    flex-basis: 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .input {
+    min-height: 46px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .result {
+    gap: 16px;
+    min-height: 100px;
+    padding: 14px 16px;
+  }
+
+  .productImage {
+    flex-basis: 72px;
+    width: 72px;
+    height: 72px;
+  }
+}
+
+@include on('desktop') {
+  .container {
+    padding-inline: 18px;
+  }
+}

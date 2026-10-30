@@ -1,0 +1,54 @@
+@use '@/app/styles/mixins' as *;
+@use '@/app/styles/colors' as *;
+
+.container {
+  grid-column: 1 / -1;
+  width: 100%;
+  min-width: 0;
+
+  padding-top: 24px;
+
+  padding-bottom: 56px;
+  @include on('tablet') {
+    padding-bottom: 64px;
+  }
+
+  @include on('desktop') {
+    padding-bottom: 80px;
+  }
+}
+
+.cart {
+  margin-bottom: 16px;
+}
+
+.historyButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border: 1px solid $primary;
+  border-radius: 48px;
+  color: $primary;
+  text-decoration: none;
+  font-weight: 600;
+  transition: border-color 0.3s;
+  margin-bottom: 20px;
+
+  &:hover {
+    background-color: $hover;
+  }
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+
+  @include on('tablet') {
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+}
